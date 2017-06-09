@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		<link rel="stylesheet" href="foundation.css" />
+		<link rel="stylesheet" href="app.css" />
+		<link rel="stylesheet" href="d3-context-menu.css" />
+		    <style type="text/css">
+.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	  cursor: pointer;
+	}
+	
+.rect rectangle{
+  stroke: #fff;
+  fill: steelblue;
+}	
+.rect text { font: 12px sans-serif; }
+
+
+.node text { font: 12px sans-serif; }
+
+.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+    
+.images:hover{
+	cursor: text;
+	opacity: 0.2;
+	
+}
+
+.images {
+	/* position: absolute; 
+	left: 2px; */ 
+	width: 90px;
+	height: 90px;
+    /* float: left; */
+}
+
+#body {
+        overflow: hidden;
+    }
+image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+    </style>
+
+
+		<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+				<script>
+				sap.ui.localResources("orgchart");
+				var view = sap.ui.view({id:"idorgchart1", viewName:"orgchart.orgchart", type:sap.ui.core.mvc.ViewType.JS});
+				view.placeAt("content");
+				</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+	</head>
+	<body class="sapUiBody" role="application">
+	        <div id="RenameNodeModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <h2 id="modalTitle">Rename Node</h2>
+          <form id="RenameNodeForm">
+            <div class="row">
+              <div class="large-12 columns">
+              <img class ='images' id='RenameNodeImage' src='./no_preview.png' alt='' /><input type='file' id='changepic' style='display: none;'/>                          
+                <label>Name
+                  <input type="text" class="inputName" id='RenameNodeName' placeholder="node name" />
+                </label>
+                <label>Phone
+                  <input type="text" class="inputName" id='RenameNodePhone' placeholder="node phone" />
+                </label>     
+                <label>Title
+                  <input type="text" class="inputName" id='RenameNodeTitle' placeholder="node title" />
+                </label>  
+                <label>Email
+                  <input type="text" class="inputName" id='RenameNodeEmail' placeholder="node email" />
+                </label>                                            
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-8 columns">
+                &nbsp;
+              </div>
+              <div class="large-4 columns">
+                <a href="#" id="closerenamenode" class="button info">Cancel</a>
+                <a href="#" id="renamenode" class="button success">Confirm</a>
+              </div>
+            </div>
+          </form>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+
+        <div id="CreateNodeModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <h2 id="modalTitle">Create Node</h2>
+          <form id="CreateNodeForm">
+            <div class="row">
+              <div class="large-12 columns">
+              <img class ='images' id='image' src='./no_preview.png' alt='' /><input type='file' id='uploadpic' style='display: none;'/>            
+                <label>Name
+                  <input type="text" class="inputName" id='CreateNodeName' placeholder="Firstname Lastname" />
+                </label>
+                <label>Phone
+                  <input type="tel" class="inputName" id='CreateNodePhone' placeholder="908 908 9090" />
+                </label>  
+                 <label>Title
+                  <input type="text" class="inputName" id='CreateNodeTitle' placeholder="President" />
+                </label>   
+                 <label>Email
+                  <input type="email" class="inputName" id='CreateNodeEmail' placeholder="drake@company.com" />
+                </label>                                              
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-8 columns">
+                &nbsp;
+              </div>
+              <div class="large-4 columns">
+                <a href="#" id="closecreatenode" class="button info">Cancel</a>
+                <a href="#" id="createnode" class="button success">Create</a>
+              </div>
+            </div>
+          </form>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+
+        <script src="d3-context-menu.js"></script>
+        <script src="underscore-min.js"></script>
+        <script src="jquery.js"></script>
+        <script src="fastclick.js"></script>
+        <script src="foundation.min.js"></script>
+		<div id="content"></div>
+	</body>
+</html>

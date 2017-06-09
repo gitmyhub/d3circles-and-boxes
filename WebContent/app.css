@@ -1,0 +1,32 @@
+
+.overlay{
+    background-color:#EEE;
+}
+
+.templink {
+  fill: none;
+  stroke: red;
+  stroke-width: 3px;
+}
+
+.ghostCircle.show{
+    display:block;
+}
+
+.ghostCircle, .activeDrag .ghostCircle{
+     display: none;
+}
+
+.ghostRect.show{
+    display:block;
+}
+
+.ghostRect, .activeDrag .ghostRect{
+     display: none;
+}
+
+
+.hidden {
+        display: none;
+}
+
